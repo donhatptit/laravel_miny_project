@@ -24,3 +24,11 @@
     <!-- end menu-ft -->
     <div style="text-align: center; color: #acafb5; margin-top: 20px; font-size: 12px; ">Copyright &copy 2018 Miny. Design by 123DOC</div>
 </div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=2243494985940244&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>

@@ -8,6 +8,15 @@ class Category extends Model
 {
     protected $table = 'tbl_class';
     public $timestamps = false;
+    public function subject()
+    {
+        return $this->hasMany('App\Subject', 'class_id', 'id');
+    }
+
+    public function post()
+    {
+        return $this->hasManyThrough('App\Post', 'App\Subject', 'class_id', 'subject_id', 'id');
+    }
 
    
 }

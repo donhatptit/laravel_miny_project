@@ -15,3 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/trang-chu', 'client\PageController@index');
+//Route::get('lop-{id}', 'client\CategoryController@index');
+Route::get('/chi-tiet/{post_id}/{subject_id}', 'client\DetailController@index');
