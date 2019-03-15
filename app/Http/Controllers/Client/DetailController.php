@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\client;
+namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,13 +23,13 @@ class DetailController extends Controller
         $data_class = Category::with('subject')->orderBy('id', 'desc')->get();
         $data_post = Post::all()->slice(0, 6)->sortByDesc('id');
 
-        $array = [
+        $data = [
             'data_class' => $data_class,
             'subject' => $subject,
             'post' => $post,
             'data_post' => $data_post
         ];
-        return view('client.detail_post', $array);
+        return view('client.detail_post', $data);
     }
 
 }

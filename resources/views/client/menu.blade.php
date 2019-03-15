@@ -17,7 +17,7 @@
                     <ul class="ul_dropdown">
                         <div class="column">
                             @foreach($data->subject as $data_subject)
-                            <li><a href="">{{$data_subject->name_subject}}</a></li>
+                            <li><a href="public/lop-{{ $data_subject->class_id }}/{{ $data_subject->id }}/1">{{$data_subject->name_subject}}</a></li>
                                 @endforeach
                         </div>
                         <div class="column1">

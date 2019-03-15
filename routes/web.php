@@ -14,6 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/trang-chu', 'client\PageController@index');
-//Route::get('lop-{id}', 'client\CategoryController@index');
-Route::get('/chi-tiet/{post_id}/{subject_id}', 'client\DetailController@index');
+//Admin
+
+
+//Client
+Route::get('/trang-chu', 'Client\PageController@index');
+Route::get('lop-{class_id}', 'Client\CategoryController@index');
+Route::get('lop-{class_id}/{subject_id}/{p}', 'Client\CategoryController@getDetail');
+Route::get('/chi-tiet/{post_id}/{subject_id}', 'Client\DetailController@index');

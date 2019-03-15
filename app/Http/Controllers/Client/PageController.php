@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\client;
+namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,7 +25,7 @@ class PageController extends Controller
             $subject[$key] = $cl->subject->slice(0, 4);
             $subpost = $cl->post->slice(0, 6);
         }
-        $array = [
+        $data = [
             'data_class' => $data_class,
             'data_post' => $data_post,
             'data_class_home' => $data_class_home,
@@ -34,7 +34,7 @@ class PageController extends Controller
             'subpost' => $subpost
 
         ];
-        return view('client.home',$array);
+        return view('client.home',$data);
 
     }
 
