@@ -15,7 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Admin
+Route::group(['prefix' => 'Admin'], function() {
 
+    Route::get('login', 'Auth\LoginController@LoginForm');
+    Route::post('home', 'Auth\LoginController@getLogin');
+    Route::post('logout', 'Auth\LoginController@Logout')->name('logout');
+
+    Route::group(['prefix' => 'user'], function()
+    {
+        Route::get('quan-ly-nguoi-dung', 'Admin\UserController@listUser');
+        Route::get('them-nguoi-dung', 'Admin\UserController@create');
+        Route::post('them-nguoi-dung', 'Admin\UserController@store');
+
+        Route::get('sua/{id}', 'Admin\UserController@edit');
+        Route::post('sua/{id}', 'Admin\UserController@update')->name('user.update');
+
+        Route::get('xoa-{user_id}', 'Admin\UserController@destroy');
+    });
+
+});
 
 //Client
 Route::get('/trang-chu', 'Client\PageController@index');
