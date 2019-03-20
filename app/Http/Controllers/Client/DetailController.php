@@ -17,6 +17,7 @@ class DetailController extends Controller
      */
     public function index($post_id, $subject_id)
     {
+       
 
         $post = Post::where('id', $post_id)->first();
         $subject = Subject::where('id', $subject_id)->first();

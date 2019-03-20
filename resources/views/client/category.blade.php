@@ -1,4 +1,11 @@
 @extends('client.layout')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('client/css/category.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('client/css/chitiet.css')}}">
+@endsection
+@section('menu')
+    @include('client.menu')
+@endsection
 @section('main_content')
 <div id="banner" style="width: 100%;">
     <div class="banner_container">
@@ -39,7 +46,7 @@
                     @foreach ($subpost->post as $post)
                     <div class="post_news">
                         <div class="post_content">
-                            <a href="" >
+                            <a href="public/chi-tiet/{{ $post->id }}/{{ $post->subject_id }}" >
                                 <div class="card-post">
                                     <div class="title-post" title="">{{$post->name }}</div>
                                     <div class="text-author">
@@ -62,7 +69,7 @@
                     </div>
 
                     @endforeach
-                    <div class="read_more"><a href="lop-{{ $post->class_id }}/{{ $post->id }}/1">Xem thêm</a></div>
+                    <div class="read_more" style="width: 100px;"><a href="public/lop-{{ $subpost->class_id }}/{{ $subpost->id }}/1">Xem thêm</a></div>
 
                 </div>
             </div>

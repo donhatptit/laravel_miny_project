@@ -1,17 +1,16 @@
 @extends('client.layout')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('client/css/category.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('client/css/chitiet.css')}}">
+@endsection
+@section('menu')
+    @include('client.menu')
+@endsection
 <!-- start banner -->
 @section('main_content')
 <div id="banner" style="width: 100%;">
     <div class="banner_container">
-        <ul class="breadcrumb">
-            <li><a href="http://localhost/minyproject/public/trang-chu">Trang chủ</a></li>
-            <li>
-                <a href="http://localhost/minyproject/public/lop-{{$class_id}}">
-                    Lớp {{ $class_id }}
-                </a>
-            </li>
-            <li>{{ $title->name_subject }}</li>
-        </ul>
+       @include('client.breadcrumbs')
         <div class="title">{{ $title->name_subject }}</div>
         <div class="circle_2"></div>
         <div class="circle_1"></div>
@@ -44,7 +43,7 @@
                         {{--foreach--}}
                         @foreach($post as $postname)
                         <div class="post_content">
-                            <a href="" >
+                            <a href="public/chi-tiet/{{ $postname->id }}/{{ $postname->subject_id }}" >
                                 <div class="card-post">
                                     <div class="title-post" title="">{{ $postname->name }}</div>
                                     <div class="text-author">

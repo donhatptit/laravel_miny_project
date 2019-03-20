@@ -6,8 +6,7 @@
     <title>Trang chủ</title>
     <base href="http://localhost/minyproject/">
     <link rel="stylesheet" type="text/css" href="{{ asset('client/css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/css/chitiet.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('client/css/category.css')}}">
+    @yield('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('client/images/trang-chu/logo.png')}}">
@@ -16,7 +15,7 @@
 
 <body>
     @include('client.header')
-    @include('client.menu')
+    @yield('menu')
     @yield('main_content')
     @include('client.footer')
 </body>

@@ -1,24 +1,30 @@
 
 @extends('client.layout')
-
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('client/css/chitiet.css')}}">
+    @endsection
+@section('menu')
+    @include('client.menu')
+@endsection
 @section('main_content')
+    {{--{{  dd($subject) }}--}}
 <div id="banner" style="width: 100%;">
     <div class="banner_container">
         <ul class="breadcrumb">
-            <li><a href="trang-chu">Trang chủ</a></li>
+            <li><a href="http://localhost/minyproject/public/trang-chu">Trang chủ</a></li>
             <li>
-                <a href="">
+                <a href="public/lop-{{ $subject->class_id }}">
                   Lớp {{ $subject->class_id }}
                 </a>
             </li>
             <li>
-                <a href="">
-                    {{ $subject->name_subject }}
+                <a href="public/lop-{{ $subject->class_id }}/{{ $subject['id'] }}/1">
+                    {{ $subject['name_subject'] }}
                 </a>
             </li>
-            <li>{{ $post->name }}</li>
+            <li>{{ $post['name'] }}</li>
         </ul>
-        <div class="title">{{ $post->name }}</div>
+        <div class="title">{{ $post['name'] }}</div>
         <div class="circle_2"></div>
         <div class="circle_1"></div>
     </div>
@@ -51,7 +57,7 @@
                 </div>
                 <div class="comment-form">
                     <h4>Post Comment</h4>
-                    <fb:comments href="http://localhost:81/demo_project/trang-chu" colorscheme="light" numposts="5" data-width="100%"></fb:comments>
+                    <fb:comments href="http://localhost/minyproject/public/trang-chu" colorscheme="light" numposts="5" data-width="100%"></fb:comments>
                 </div>
 
 
@@ -66,7 +72,7 @@
                         <div class="news_content">
                             <ul>
                                 @foreach($data_post as $title)
-                                <li><a href="">{{ $title->name }}</a></li>
+                                <li><a href="public/chi-tiet/{{$title->id}}/{{$title->subject_id}}">{{ $title->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -99,7 +105,7 @@
             @foreach($data_post as $postname)
 
                 <div class="post-content">
-                    <a href="">
+                    <a href="public/chi-tiet/{{$postname->id}}/{{$postname->subject_id}}">
                         <div class="card-post">
                             <div class="title-post">{{ $postname->name }}</div>
                             <div class="text-author">

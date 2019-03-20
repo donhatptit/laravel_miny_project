@@ -55,5 +55,16 @@ class CategoryController extends Controller
         return view('client.category_detail', $data);
     }
 
-   
+   public function getLastest()
+   {
+       $data_class = Category::with('subject')->orderBy('id', 'desc')->get();
+       $data_post = Post::all()->slice(0, 6)->sortByDesc('id');
+       $data = [
+           'data_class' => $data_class,
+           'data_post' => $data_post
+
+
+       ];
+       return view('client.lastest_detail', $data);
+   }
 }

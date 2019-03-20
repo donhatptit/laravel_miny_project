@@ -1,0 +1,175 @@
+/*login*/
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+* {
+  box-sizing: border-box;
+   padding: 0;
+  margin: 0;
+}
+
+.login {
+  /* The image used */
+  min-height: 380px;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding-top: 100px;
+
+}
+.form_login{
+	width: 1000px;
+	margin: auto;
+}
+/* Add styles to the form container */
+.container {
+  /*position: absolute;*/
+  max-width: 300px;
+  padding: 16px;
+  background-color:#ddd;
+  margin: auto;
+}
+
+.container h1{
+	text-align: center;
+}
+/* Full-width input fields */
+ input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+input[type=checkbox]{
+	margin-bottom: 25px;
+	margin-top: -30px;
+}
+/* Set a style for the submit button */
+.btn1 {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn1:hover {
+  opacity: 1;
+}
+/*end login*/
+/*layout*/
+.container-fuild{
+
+  width: 100%;
+  height: auto;
+display: flex;
+}
+.sibar{
+  width: 18%;
+  min-height: 630px;
+  background-color: #606060;
+  
+}
+.header{
+  width: 82%;
+  height: auto;
+  background-color: transparent;
+
+}
+.sibar h1{
+  text-align: center;
+  line-height: 50px;
+}
+.sibar h1 a{
+  color: white;
+  text-decoration: none;
+}
+.sibar ul li{
+  padding: 15px 35px;
+
+
+}
+.sibar ul li a{
+  text-decoration: none;
+  color: white;
+}
+.sibar ul li a:hover{
+  color: #C98F35;
+}
+.heading{
+  width: 100%;
+  line-height: 50px;
+  background-color: #606060;
+  display: flex;
+}
+.heading-left{
+  width: 40%;
+  height: auto;
+height: 50px;
+}
+.heading-right{
+  width: 60%;
+  height: auto;
+  height: 50px;
+  display: flex;
+}
+.search{
+  width: 30%;
+  height: 50px;
+}
+
+
+.power{
+  width: 70%;
+}
+.power i{
+  float: right;
+  margin-right: 30px;
+  margin-top: 15px;
+  color: white;
+}
+.power span{
+  color: white;
+  margin-left: 35px;
+}
+/*view_user*/
+.container-fuild1{
+  font-size: 14px;
+
+}
+
+
+.btn-primary{
+  width: 80px;
+}
+.btn-default, .btn-danger{
+  width: 40px;
+}
+/*end view_user*/
+.tim_kiem{
+  width: 60%;
+  padding-top: 10px;
+
+}
+.tim_kiem input[type="text"]{
+  padding-left: 15px;
+}
+
+.alert{
+  color: white;
+  cursor: pointer;
+
+}
+.alert:hover{
+  color: #C98F35;
+}

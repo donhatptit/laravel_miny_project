@@ -9,13 +9,13 @@
 
         </div>
 
-        <div class="view-all"><a href="#">Xem tất cả <img src="{{asset ('client/images/trang-chu/icon-view-all.png')}}"></a></div>
+        <div class="view-all"><a href="public/moi-nhat/1">Xem tất cả <img src="{{asset ('client/images/trang-chu/icon-view-all.png')}}"></a></div>
     </div>
     <div class="line-heading"></div>
     <div style="clear: both;"></div>
     <div class="post">
        @foreach($data_post as $post)
-        <a href=" public/chi-tiet/{{ $post->id }}/{{ $post->id }}" class="post-content">
+        <a href=" public/chi-tiet/{{ $post->id }}/{{ $post->subject_id }}" class="post-content">
 
             <div class="card-post">
                 <div class="title-post" title="">

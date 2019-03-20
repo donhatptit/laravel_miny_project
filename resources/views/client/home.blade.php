@@ -1,5 +1,7 @@
 @extends('client.layout')
-
+@section('menu')
+    @include('client.menu')
+    @endsection
 @section('main_content')
 <div id="wrap">
     {{--menu--}}
