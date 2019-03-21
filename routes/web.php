@@ -15,11 +15,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Admin
-Route::group(['prefix' => 'Admin'], function() {
+Route::group(['prefix' => 'admin'], function() {
 
     Route::get('login', 'Auth\LoginController@LoginForm');
     Route::post('home', 'Auth\LoginController@getLogin');
     Route::post('logout', 'Auth\LoginController@Logout')->name('logout');
+
+    Route::group(['prefix' => 'category'], function()
+    {
+        Route::get('quan-ly-lop', 'Admin\CategoryController@index');
+        Route::get('them-lop', 'Admin\CategoryController@create');
+        Route::post('them-lop', 'Admin\CategoryController@store');
+
+        Route::get('sua/{id}', 'Admin\CategoryController@edit');
+        Route::post('sua/{id}', 'Admin\CategoryController@update')->name('cate.update');
+
+        Route::get('xoa-{id}', 'Admin\CategoryController@destroy');
+
+    });
+
+    Route::group(['prefix' => 'subject'], function()
+    {
+        Route::get('quan-ly-mon-hoc', 'Admin\SubjectController@index');
+        Route::get('them-mon-hoc', 'Admin\SubjectController@create');
+        Route::post('them-mon-hoc', 'Admin\SubjectController@store');
+
+        Route::get('sua/{id}', 'Admin\SubjectController@edit');
+        Route::post('sua/{id}', 'Admin\SubjectController@update')->name('sub.update');
+
+        Route::get('xoa-{id}', 'Admin\SubjectController@destroy');
+
+    });
 
     Route::group(['prefix' => 'user'], function()
     {
@@ -32,6 +58,7 @@ Route::group(['prefix' => 'Admin'], function() {
 
         Route::get('xoa-{user_id}', 'Admin\UserController@destroy');
     });
+
 
 });
 

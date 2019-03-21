@@ -6,7 +6,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="quan-ly-lop">
+        <a class="nav-link" href="category/quan-ly-lop">
             <i class="fas fa-align-justify"></i>
             <span>Quản Lý Lớp</span></a>
     </li>
@@ -21,7 +21,7 @@
             <span>Quản Lý Bài Viết</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="quan-ly-nguoi-dung">
+        <a class="nav-link" href="user/quan-ly-nguoi-dung">
             <i class="fas fa-user"></i>
             <span>Quản Lý Người Dùng</span></a>
     </li>
