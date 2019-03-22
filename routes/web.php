@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin'], function() {
 
     Route::group(['prefix' => 'category'], function()
     {
-        Route::get('quan-ly-lop', 'Admin\CategoryController@index');
+        Route::get('quan-ly-lop', 'Admin\CategoryController@index')->name('quan-ly-lop');
         Route::get('them-lop', 'Admin\CategoryController@create');
         Route::post('them-lop', 'Admin\CategoryController@store');
 
@@ -36,7 +36,7 @@ Route::group(['prefix' => 'admin'], function() {
 
     Route::group(['prefix' => 'subject'], function()
     {
-        Route::get('quan-ly-mon-hoc', 'Admin\SubjectController@index');
+        Route::get('quan-ly-mon-hoc', 'Admin\SubjectController@index')->name('quan-ly-mon-hoc');
         Route::get('them-mon-hoc', 'Admin\SubjectController@create');
         Route::post('them-mon-hoc', 'Admin\SubjectController@store');
 
@@ -47,9 +47,22 @@ Route::group(['prefix' => 'admin'], function() {
 
     });
 
+    Route::group(['prefix' => 'post'], function()
+    {
+        Route::get('quan-ly-bai-viet', 'Admin\PostController@index')->name('quan-ly-bai-viet');
+        Route::get('them-bai-viet', 'Admin\PostController@create');
+        Route::post('them-bai-viet', 'Admin\PostController@store');
+
+        Route::get('sua/{id}', 'Admin\PostController@edit');
+        Route::post('sua/{id}', 'Admin\PostController@update')->name('post.update');
+
+        Route::get('xoa/{id}', 'Admin\PostController@destroy');
+
+    });
+
     Route::group(['prefix' => 'user'], function()
     {
-        Route::get('quan-ly-nguoi-dung', 'Admin\UserController@listUser');
+        Route::get('quan-ly-nguoi-dung', 'Admin\UserController@listUser')->name('quan-ly-nguoi-dung');
         Route::get('them-nguoi-dung', 'Admin\UserController@create');
         Route::post('them-nguoi-dung', 'Admin\UserController@store');
 
