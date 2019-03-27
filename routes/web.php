@@ -15,16 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Admin
-Route::group(['prefix' => 'admin'], function() {
 
-    Route::get('login', 'Auth\LoginController@LoginForm');
-    Route::post('home', 'Auth\LoginController@getLogin');
-    Route::post('logout', 'Auth\LoginController@Logout')->name('logout');
 
+    Route::get('admin/login', 'Auth\LoginController@LoginForm')->name('admin.login');
+    Route::post('admin/home', 'Auth\LoginController@getLogin');
+    Route::get('admin/logout', 'Auth\LoginController@getLogout')->name('admin.logout');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'adminlogin'], function() {
+    Route::get('home', 'Auth\LoginController@adminHome')->name('admin.home');
     Route::group(['prefix' => 'category'], function()
     {
-        Route::get('quan-ly-lop', 'Admin\CategoryController@index')->name('quan-ly-lop');
-        Route::get('them-lop', 'Admin\CategoryController@create');
+        Route::get('quan-ly-lop', 'Admin\CategoryController@index')->name('category.manager');
+        Route::get('them-lop', 'Admin\CategoryController@create')->name('category.add');
         Route::post('them-lop', 'Admin\CategoryController@store');
 
         Route::get('sua/{id}', 'Admin\CategoryController@edit');
@@ -36,8 +38,8 @@ Route::group(['prefix' => 'admin'], function() {
 
     Route::group(['prefix' => 'subject'], function()
     {
-        Route::get('quan-ly-mon-hoc', 'Admin\SubjectController@index')->name('quan-ly-mon-hoc');
-        Route::get('them-mon-hoc', 'Admin\SubjectController@create');
+        Route::get('quan-ly-mon-hoc', 'Admin\SubjectController@index')->name('subject.manager');
+        Route::get('them-mon-hoc', 'Admin\SubjectController@create')->name('subject.add');
         Route::post('them-mon-hoc', 'Admin\SubjectController@store');
 
         Route::get('sua/{id}', 'Admin\SubjectController@edit');
@@ -49,8 +51,8 @@ Route::group(['prefix' => 'admin'], function() {
 
     Route::group(['prefix' => 'post'], function()
     {
-        Route::get('quan-ly-bai-viet', 'Admin\PostController@index')->name('quan-ly-bai-viet');
-        Route::get('them-bai-viet', 'Admin\PostController@create');
+        Route::get('quan-ly-bai-viet', 'Admin\PostController@index')->name('post.manager');
+        Route::get('them-bai-viet', 'Admin\PostController@create')->name('post.add');
         Route::post('them-bai-viet', 'Admin\PostController@store');
 
         Route::get('sua/{id}', 'Admin\PostController@edit');
@@ -62,8 +64,8 @@ Route::group(['prefix' => 'admin'], function() {
 
     Route::group(['prefix' => 'user'], function()
     {
-        Route::get('quan-ly-nguoi-dung', 'Admin\UserController@listUser')->name('quan-ly-nguoi-dung');
-        Route::get('them-nguoi-dung', 'Admin\UserController@create');
+        Route::get('quan-ly-nguoi-dung', 'Admin\UserController@listUser')->name('user.manager');
+        Route::get('them-nguoi-dung', 'Admin\UserController@create')->name('user.add');
         Route::post('them-nguoi-dung', 'Admin\UserController@store');
 
         Route::get('sua/{id}', 'Admin\UserController@edit');
@@ -81,3 +83,7 @@ Route::get('lop-{class_id}', 'Client\CategoryController@index');
 Route::get('lop-{class_id}/{subject_id}/{p}', 'Client\CategoryController@getDetail');
 Route::get('moi-nhat/{p}', 'Client\CategoryController@getLastest');
 Route::get('/chi-tiet/{post_id}/{subject_id}', 'Client\DetailController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
