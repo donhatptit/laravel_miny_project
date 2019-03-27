@@ -54,7 +54,7 @@ class PostController extends Controller
         $post = new Post();
         $post->name = $request->name;
         $post->subject_id = $request->subject_id;
-        $post->content = $request->content;
+        $post->content = $request->get('content');
         $post->athour = Session::get('fullname');
         $post->view = 0;
         $post->favorite = 0;
@@ -109,7 +109,7 @@ class PostController extends Controller
 
         $post->name = $request->name;
         $post->subject_id = $request->subject_id;
-        $post->content = $request->content;
+        $post->content = $request->get('content');
         $post->athour = Session::get('fullname');
         $post->view = 0;
         $post->favorite = 0;

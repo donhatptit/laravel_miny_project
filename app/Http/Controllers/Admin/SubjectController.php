@@ -16,8 +16,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $sub = Subject::orderBy('id', 'desc')->paginate(4);
-        return view('admin.subject.list', ['sub' => $sub]);
+        $subject = Subject::orderBy('id', 'desc')->paginate(4);
+        return view('admin.subject.list', ['subject' => $subject]);
     }
 
     /**
@@ -48,11 +48,12 @@ class SubjectController extends Controller
                 'name_subject.required' => 'Vui lòng nhập tên môn học',
                 'name_subject.unique' =>'Môn học đã tồn tại'
             ]);
-        $sub= new Subject();
-        $sub->name_subject = $request->name_subject;
-        $sub->class_id = $request->class_id;
-        $sub->save();
-        return redirect('admin/subject/quan-ly-mon-hoc')->with('message', 'Thêm thành công!');
+        $subject= new Subject();
+        $subject->name_subject = $request->name_subject;
+        $subject->class_id = $request->class_id;
+        $subject->save();
+        $request->session()->flash('message', 'Thêm thành công!');
+        return redirect(route('subject.manager'));
     }
 
     /**
@@ -74,9 +75,9 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        $sub = Subject::find($id);
+        $subject = Subject::find($id);
         $categories = Category::all();
-        return view('admin.subject.edit', ['sub' => $sub], ['categories' => $categories]);
+        return view('admin.subject.edit', ['subject' => $subject], ['categories' => $categories]);
     }
 
     /**
@@ -97,12 +98,12 @@ class SubjectController extends Controller
             ]);
 
 
-        $sub = Subject::find($id);
+        $subject = Subject::find($id);
 
-        $sub->name_subject= $request->name_subject;
-        $sub->save();
-
-        return redirect('admin/subject/quan-ly-mon-hoc')->with('thongbao','Sửa thành công!');
+        $subject->name_subject= $request->name_subject;
+        $subject->save();
+        $request->session()->flash('status','Sửa thành công!');
+        return redirect(route('subject.manager'));
     }
 
     /**
@@ -113,8 +114,9 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        $sub = Subject::find($id);
-        $sub->delete();
-        return redirect('admin/subject/quan-ly-mon-hoc')->with('mess', 'Xóa thành công');
+        $subject = Subject::find($id);
+        $subject->delete();
+        session()->flash('mess', 'Xóa thành công');
+        return redirect(route('subject.manager'));
     }
 }

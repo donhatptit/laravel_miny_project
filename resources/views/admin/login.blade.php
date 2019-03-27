@@ -29,13 +29,13 @@
 
     <div class="form_login">
 
-        <form action="{{ url('Admin/home') }}" method="post" class="container">
+        <form action="{{ route('admin.home') }}" method="post" class="container">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <h1>Login</h1>
             <label for="user"><b>Username:</b></label>
-            <input type="text" name="username" placeholder="Enter Username" required="">
+            <input type="text" name="username" placeholder="Enter Username">
             <label for="pass"><b>Password:</b></label>
-            <input type="password" name="password" placeholder="Enter Password" id="myInput" required="">
+            <input type="password" name="password" placeholder="Enter Password" id="pass" >
             <input type="checkbox" onclick="showpass();" name="">Show password
             <div id="mess">
                 @if (session('success'))

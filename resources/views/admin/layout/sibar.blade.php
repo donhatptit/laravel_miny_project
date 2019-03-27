@@ -1,27 +1,27 @@
 <ul class="sidebar navbar-nav">
     <li class="nav-item active">
-        <a class="nav-link" href="http://localhost/minyproject/public/admin/home">
+        <a class="nav-link" href="">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('quan-ly-lop') }}">
+        <a class="nav-link" href="{{ route('category.manager') }}">
             <i class="fas fa-align-justify"></i>
             <span>Quản Lý Lớp</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('quan-ly-mon-hoc') }}">
+        <a class="nav-link" href="{{ route('subject.manager') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Quản Lý Môn Học</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('quan-ly-bai-viet') }}">
+        <a class="nav-link" href="{{ route('post.manager') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Quản Lý Bài Viết</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('quan-ly-nguoi-dung') }}">
+        <a class="nav-link" href="{{ route('user.manager') }}">
             <i class="fas fa-user"></i>
             <span>Quản Lý Người Dùng</span></a>
     </li>

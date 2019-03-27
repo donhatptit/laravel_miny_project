@@ -12,7 +12,7 @@
                                 <h2>Quản Lý Môn</h2>
                             </div>
                             <div class="col-md-6 text-right">
-                                <a href="them-mon-hoc" class="btn btn-primary">Thêm</a>
+                                <a href="{{ route('subject.add') }}" class="btn btn-primary">Thêm</a>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
 
                             </div>
                         @endif
-                        @if(session('thongbao'))
+                        @if(session('status'))
                             <div class="alert alert-success">
                                 <li>{{ 'Sửa thành công!' }}</li>
 
@@ -47,13 +47,13 @@
                             </thead>
                             <tbody class="danhsach">
 
-                            @foreach($sub as $list)
+                            @foreach($subject as $listsubject)
 
                                 <tr>
-                                    <td><?php echo $list["name_subject"]; ?></td>
+                                    <td><?php echo $listsubject["name_subject"]; ?></td>
                                     <td style="text-align: center;">
-                                        <a href="sua/{{$list->id}}" class="btn btn-default"><i class="fas fa-pencil-alt"></i></a> &nbsp;&nbsp;
-                                        <a href="xoa-{{$list->id}}" onclick="return window.confirm('Are you sure ?')" class="btn btn-danger">
+                                        <a href="sua/{{$listsubject->id}}" class="btn btn-default"><i class="fas fa-pencil-alt"></i></a> &nbsp;&nbsp;
+                                        <a href="xoa-{{$listsubject->id}}" onclick="return window.confirm('Are you sure ?')" class="btn btn-danger">
                                             <em class="fa fa-trash"></em></a>
                                     </td>
                                 </tr>
@@ -63,7 +63,7 @@
                         <!-- end table -->
                     </div>
                     <div class="clearfix" style="padding:7px !important;">
-                        {!! $sub->links() !!}
+                        {!! $subject->links() !!}
                     </div>
                 </div>
             </div>

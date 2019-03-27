@@ -39,17 +39,18 @@ class CategoryController extends Controller
     {
         $this->validate($request,
             [
-                'class' => 'required',
+                'class_name' => 'required',
 
             ], [
-                'class.required' => 'Vui lòng nhập tên lop',
+                'class.required' => 'Vui lòng nhập tên lớp',
 
             ]);
 
         $cate= new Category();
-        $cate->class = $request->class;
+        $cate->class_name = $request->class_name;
         $cate->save();
-        return redirect('admin/category/quan-ly-lop')->with('message', 'Thêm thành công!');
+        $request->session()->flash('message', 'Thêm thành công!');
+        return redirect(route('category.manager'));
     }
 
     /**
@@ -86,7 +87,7 @@ class CategoryController extends Controller
     {
         $this->validate($request,
             [
-                'class' => 'required'
+                'class_name' => 'required'
             ], [
                 'class.required' => 'Vui lòng nhập tên lớp'
             ]);
@@ -94,10 +95,10 @@ class CategoryController extends Controller
 
         $cate = Category::find($id);
 
-        $cate->class= $request->class;
+        $cate->class_name= $request->class_name;
         $cate->save();
-
-        return redirect('admin/category/quan-ly-lop')->with('thongbao','Sửa thành công!');
+        $request->session()->flash('status','Sửa thành công!');
+        return redirect(route('category.manager'));
     }
 
     /**
@@ -110,6 +111,7 @@ class CategoryController extends Controller
     {
         $cate = Category::find($id);
         $cate->delete();
-        return redirect('admin/category/quan-ly-lop')->with('mess', 'Xóa thành công');
+        session()->flash('mess', 'Xóa thành công');
+        return redirect(route('category.manager'));
     }
 }

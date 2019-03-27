@@ -38,14 +38,14 @@
             <a class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                 @if (session('fullname'))
                     <strong>
-                        {{ session('fullname') }}
+                        {{ session('fullname') }} ( @if(session('level') == 0) {{ 'Admin' }} @else {{'Editor'}} @endif )
                     </strong>
                 @endif
 
             </a>
         </li>
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="login" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="{{ route('admin.logout') }}" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-sign-out-alt"></i>
             </a>
 

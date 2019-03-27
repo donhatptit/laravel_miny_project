@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $table = 'tbl_class';
+    protected $table = 'tbl_category';
     public $timestamps = false;
     public function subject()
     {
@@ -17,6 +17,6 @@ class Category extends Model
     {
         return $this->hasManyThrough('App\Post', 'App\Subject', 'class_id', 'subject_id', 'id');
     }
-
+//relation, route, middleware, 
    
 }

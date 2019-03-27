@@ -48,8 +48,19 @@ class LoginController extends Controller
     {
         return view('admin.login');
     }
+    public function adminHome()
+    {
+        return view ('admin.layout.admin');
+    }
     public function getLogin(Request $request)
     {
+//        $username = $request['username'];
+//        $password = $request['password'];
+//        $password = md5($password);
+//        if(Auth::attempt(['username' => $username, 'password' => $password]))
+//            return redirect('admin.home');
+//        else
+//            return view('admin.login');
         $username= $request->username;
         $password = $request->password;
         $password = md5($password);
@@ -62,7 +73,7 @@ class LoginController extends Controller
                 $request->session()->put('fullname', $check->fullname);
                 $request->session()->put('level', $check->level);
                 $data = $request->session()->all();
-                return view('admin/layout/admin');
+                return redirect(route('admin.home'));
             }else{
                 return redirect()->back()->with('success', 'Xin vui lòng kiểm tra lại tài khoản và mật khẩu !');;
             }
@@ -72,7 +83,10 @@ class LoginController extends Controller
 
     public function getLogout()
     {
-        Auth::logout();
+        Session::forget('username');
+//        dd(session('username'));
+//        dd("ok");
+        return redirect(route('admin.login'));
     }
   
 }

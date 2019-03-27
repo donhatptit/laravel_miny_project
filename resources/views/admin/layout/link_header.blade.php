@@ -5,6 +5,7 @@
 
 <!-- Custom styles for this template-->
 <link href="{{ asset('admin/css/sb-admin.css') }}" rel="stylesheet">
+<script type="text/javascript" src="{{ asset('admin/ckeditor/ckeditor.js')  }}"></script>
 <link rel="shortcut icon" href="{{asset('client/images/trang-chu/logo.png')}}">
 <style>
     body{font-size: 18px;}

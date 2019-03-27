@@ -12,7 +12,7 @@
                             <h2>Quản Lý người dùng</h2>
                         </div>
                         <div class="col-md-6 text-right">
-                            <a href="them-nguoi-dung" class="btn btn-primary">Thêm</a>
+                            <a href="{{ route('user.add') }}" class="btn btn-primary">Thêm</a>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
 
                         </div>
                 @endif
-                        @if(session('thongbao'))
+                        @if(session('status'))
                             <div class="alert alert-success">
                                 <li>{{ 'Sửa thành công!' }}</li>
 

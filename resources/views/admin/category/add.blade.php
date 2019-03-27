@@ -23,7 +23,7 @@
                             <div class="row">
                                 <div class="col-md-2 text-right">Tên Lớp</div>
                                 <div class="col-md-10">
-                                    <input type="text" name="class" value="" class="form-control">
+                                    <input type="text" name="class_name" value="" class="form-control">
                                 </div>
                             </div>
                         </div>

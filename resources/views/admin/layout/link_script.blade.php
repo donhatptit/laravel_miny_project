@@ -1,6 +1,6 @@
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('admin/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('admin/bootstrap/js/bootstrap.bundle.min.j')}}s"></script>
+<script src="{{asset('admin/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="{{asset('admin/jquery-easing/jquery.easing.min.js')}}"></script>

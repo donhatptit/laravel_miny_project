@@ -12,7 +12,7 @@
                                 <h2>Quản Lý Lớp</h2>
                             </div>
                             <div class="col-md-6 text-right">
-                                <a href="them-lop" class="btn btn-primary">Thêm</a>
+                                <a href="{{ route('category.add') }}" class="btn btn-primary">Thêm</a>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
 
                             </div>
                         @endif
-                        @if(session('thongbao'))
+                        @if(session('status'))
                             <div class="alert alert-success">
                                 <li>{{ 'Sửa thành công!' }}</li>
 
@@ -47,13 +47,13 @@
                             </thead>
                             <tbody class="danhsach">
 
-                            @foreach($cate as $list)
+                            @foreach($cate as $list_category)
 
                                 <tr>
-                                    <td><?php echo $list["class"]; ?></td>
+                                    <td><?php echo $list_category["class_name"]; ?></td>
                                     <td style="text-align: center;">
-                                        <a href="sua/{{$list->id}}" class="btn btn-default"><i class="fas fa-pencil-alt"></i></a> &nbsp;&nbsp;
-                                        <a href="xoa-{{$list->id}}" onclick="return window.confirm('Are you sure ?')" class="btn btn-danger">
+                                        <a href="sua/{{$list_category->id}}" class="btn btn-default"><i class="fas fa-pencil-alt"></i></a> &nbsp;&nbsp;
+                                        <a href="xoa-{{$list_category->id}}" onclick="return window.confirm('Are you sure ?')" class="btn btn-danger">
                                             <em class="fa fa-trash"></em></a>
                                     </td>
                                 </tr>

@@ -18,6 +18,7 @@ class UserController extends Controller
 
     public function listUser()
     {
+
         $users = User::orderBy('id', 'desc')->paginate(2);
         return view('admin.user.listuser', ['users' => $users]);
     }
@@ -28,6 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
+
         return view('admin.user.add_user');
     }
 
@@ -71,7 +73,8 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->level = $request->level;
         $user->save();
-        return redirect('Admin/user/quan-ly-nguoi-dung')->with('message', 'Thêm thành công!');
+        $request->session()->flash('message', 'Thêm thành công!');
+        return redirect(route('user.manager'));
     }
 
     /**
@@ -82,7 +85,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -132,8 +135,9 @@ class UserController extends Controller
         }
         $user->level = $request->level;
         $user->save();
+        $request->session()->flash('status', 'Sửa thành công!');
 
-        return redirect('Admin/user/quan-ly-nguoi-dung')->with('thongbao','Sửa thành công!');
+        return redirect(route('user.manager'));
     }
 
     /**
@@ -146,6 +150,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect('Admin/user/quan-ly-nguoi-dung')->with('mess', 'Xóa thành công');
+        session()->flash('mess', 'Xóa thành công');
+        return redirect(route('user.manager'));
     }
 }
