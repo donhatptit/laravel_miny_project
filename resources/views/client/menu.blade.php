@@ -11,7 +11,7 @@
     <div class="menu-primary">
         <ul>
             @foreach($data_class as $data)
-            <li class="nav-item"><a href="public/lop-{{ $data->id }}">{{$data->class}}</a>
+            <li class="nav-item"><a href="public/lop-{{ $data->id }}">{{$data->class_name}}</a>
                 <button ><i class="fa fa-angle-down sidebar-icon-plus" id="12"> </i></button>
                 <div class="dropdown-menu">
                     <ul class="ul_dropdown">
