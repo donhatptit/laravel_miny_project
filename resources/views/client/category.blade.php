@@ -10,10 +10,9 @@
 <div id="banner" style="width: 100%;">
     <div class="banner_container">
         <ul class="breadcrumb">
-            <li><a href="http://localhost/minyproject/public/trang-chu">Trang chủ</a></li>
-            <li>
-                Lớp {{ $class_id }}
-            </li>
+            @foreach($breadcurmbs as $key => $value)
+            <li><a href="{{ $value }}">{{ $key }}</a></li>
+            @endforeach
         </ul>
         <div class="title">Lớp {{$class_id}} - Giải bài tập Lớp {{$class_id}}</div>
         <div class="circle_2"></div>

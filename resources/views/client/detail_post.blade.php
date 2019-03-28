@@ -11,18 +11,13 @@
 <div id="banner" style="width: 100%;">
     <div class="banner_container">
         <ul class="breadcrumb">
-            <li><a href="http://localhost/minyproject/public/trang-chu">Trang chủ</a></li>
+            @foreach( $breadcurmbs as $key => $value)
             <li>
-                <a href="public/lop-{{ $subject->class_id }}">
-                  Lớp {{ $subject->class_id }}
+                <a href="{{ $value }}">
+                 {{ $key }}
                 </a>
             </li>
-            <li>
-                <a href="public/lop-{{ $subject->class_id }}/{{ $subject['id'] }}/1">
-                    {{ $subject['name_subject'] }}
-                </a>
-            </li>
-            <li>{{ $post['name'] }}</li>
+            @endforeach
         </ul>
         <div class="title">{{ $post['name'] }}</div>
         <div class="circle_2"></div>

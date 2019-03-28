@@ -79,11 +79,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminlogin'], function() {
 
 //Client
 Route::get('/trang-chu', 'Client\PageController@index');
-Route::get('lop-{class_id}', 'Client\CategoryController@index');
-Route::get('lop-{class_id}/{subject_id}/{p}', 'Client\CategoryController@getDetail');
+Route::get('lop-{class_id}', 'Client\CategoryController@index')->name('category.name');
+Route::get('lop-{class_id}/{subject_id}/{p}', 'Client\CategoryController@getDetail')->name('subject.name');
 Route::get('moi-nhat/{p}', 'Client\CategoryController@getLastest');
-Route::get('/chi-tiet/{post_id}/{subject_id}', 'Client\DetailController@index');
-
-Auth::routes();
-
+Route::get('/chi-tiet/{post_id}/{subject_id}', 'Client\DetailController@index')->name('post.name');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/breadcurmbs/{type}/{id}', 'Client\DetailController@rendBreadcurmbs');
+Route::get('/breadcurmbs-category/{type}/{id}', 'Client\CategoryController@breadcurmbs');
+Route::get('/breadcurmbs-subject/{type}/{id}', 'Client\CategoryController@Subjectbreadcurmbs');

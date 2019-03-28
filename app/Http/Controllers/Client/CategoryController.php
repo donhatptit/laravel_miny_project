@@ -20,6 +20,7 @@ class CategoryController extends Controller
         $data_class = Category::with('subject')->orderBy('id', 'desc')->get();
 
         $title = Subject :: where('class_id', $class_id)->take(3)->get();
+        $breadcurmbs = $this->breadcurmbs($class_id);
         $news = [];
         foreach ($title as $key => $tl) {
             $news[$key] = $tl->post->take(3);
@@ -29,7 +30,8 @@ class CategoryController extends Controller
             'data_class' => $data_class,
             'title' => $title,
             'class_id' => $class_id,
-            'news' =>$news
+            'news' =>$news,
+            'breadcurmbs' => $breadcurmbs
         ];
          return view('client.category', $data);
     }
@@ -37,6 +39,7 @@ class CategoryController extends Controller
     {
         $data_class = Category::with('subject')->orderBy('id', 'desc')->get();
         $title = Subject::where('id', $subject_id)->first();
+        $breadcurmbssubject  = $this->Subjectbreadcurmbs($class_id);
         $record_per_page = 3;
         $total_record = Post::all()->where('subject_id', $subject_id)->count();
         $num_page = ceil($total_record/$record_per_page);
@@ -49,7 +52,8 @@ class CategoryController extends Controller
             'subject_id' => $subject_id,
             'p' => $p,
             'title' => $title,
-            'post' => $post
+            'post' => $post,
+            'breadcurmbssubject' => $breadcurmbssubject
 
         ];
         return view('client.category_detail', $data);
@@ -62,9 +66,32 @@ class CategoryController extends Controller
        $data = [
            'data_class' => $data_class,
            'data_post' => $data_post
-
-
        ];
        return view('client.lastest_detail', $data);
    }
+    public function breadcurmbs($id)
+    {
+        $category = Category::where('id', $id)->first();
+        $cate = route('category.name', ['class_id' => $id ]);
+        $data = [];
+        $data = [
+            'Trang chủ' => '/minyproject/public/trang-chu',
+            $category['class_name'] => '/'
+
+        ];
+        return $data;
+    }
+    public function Subjectbreadcurmbs($id)
+    {
+        $category = Category::where('id', $id)->first();
+        $subject = Subject::where('class_id',$category['id'] )->first();
+        $cate = route('category.name', [ 'class_id' => $subject['class_id'], 'p' => 1]);
+        $data = [];
+        $data = [
+            'Trang chủ' => '/minyproject/public/trang-chu',
+            $category['class_name'] => $cate,
+            $subject['name_subject'] => ''
+        ];
+        return $data;
+    }
 }

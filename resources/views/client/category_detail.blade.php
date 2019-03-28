@@ -10,7 +10,11 @@
 @section('main_content')
 <div id="banner" style="width: 100%;">
     <div class="banner_container">
-       @include('client.breadcrumbs')
+        <ul class="breadcrumb">
+            @foreach($breadcurmbssubject as $key => $value)
+            <li><a href="{{ $value }}">{{ $key }}</a></li>
+            @endforeach
+        </ul>
         <div class="title">{{ $title->name_subject }}</div>
         <div class="circle_2"></div>
         <div class="circle_1"></div>
@@ -32,7 +36,7 @@
                     </div>
                     <div class="btn-group">
                     </div>
-                    <div class="view-all"><a href="">Quay lại <img src="{{asset('client/images/trang-chu/icon-view-all.png')}}"></a></div>
+                    <div class="view-all"><a href="public/lop-{{$title['class_id']}}">Quay lại <img src="{{asset('client/images/trang-chu/icon-view-all.png')}}"></a></div>
                 </div>
 
                 <div class="line-heading"></div>
