@@ -54,13 +54,6 @@ class LoginController extends Controller
     }
     public function getLogin(Request $request)
     {
-//        $username = $request['username'];
-//        $password = $request['password'];
-//        $password = md5($password);
-//        if(Auth::attempt(['username' => $username, 'password' => $password]))
-//            return redirect('admin.home');
-//        else
-//            return view('admin.login');
         $username= $request->username;
         $password = $request->password;
         $password = md5($password);
@@ -84,8 +77,6 @@ class LoginController extends Controller
     public function getLogout()
     {
         Session::forget('username');
-//        dd(session('username'));
-//        dd("ok");
         return redirect(route('admin.login'));
     }
   
