@@ -5,6 +5,7 @@
             <span>Dashboard</span>
         </a>
     </li>
+    @if(session('level') == 0)
     <li class="nav-item">
         <a class="nav-link" href="{{ route('category.manager') }}">
             <i class="fas fa-align-justify"></i>
@@ -15,14 +16,22 @@
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Quản Lý Môn Học</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('post.manager') }}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Quản Lý Bài Viết</span></a>
-    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="{{ route('user.manager') }}">
             <i class="fas fa-user"></i>
             <span>Quản Lý Người Dùng</span></a>
     </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('post.manager') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Quản Lý Bài Viết</span></a>
+        </li>
+@else
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('post.manager') }}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Quản Lý Bài Viết</span></a>
+        </li>
+        @endif
 </ul>
