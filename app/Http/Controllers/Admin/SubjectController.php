@@ -42,7 +42,7 @@ class SubjectController extends Controller
 
         $this->validate($request,
             [
-                'name_subject' => 'required|unique:tbl_subject,name_subject',
+                'name_subject' => 'required|unique:subject,name_subject',
 
             ], [
                 'name_subject.required' => 'Vui lòng nhập tên môn học',
@@ -77,7 +77,7 @@ class SubjectController extends Controller
     {
         $subject = Subject::find($id);
         $categories = Category::all();
-        return view('admin.subject.edit', ['subject' => $subject], ['categories' => $categories]);
+        return view('admin.subject.edit', ['subject' => $subject, 'categories' => $categories]);
     }
 
     /**

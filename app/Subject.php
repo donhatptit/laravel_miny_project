@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    protected $table = 'tbl_subject';
+    protected $table = 'subject';
     public $timestamps = false;
     public function category()
     {

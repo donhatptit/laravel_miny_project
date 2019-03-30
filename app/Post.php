@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $table = 'tbl_post';
+    protected $table = 'post';
     public $timestamps = false;
     public function subject()
     {
