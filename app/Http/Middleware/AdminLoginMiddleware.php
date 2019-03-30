@@ -16,11 +16,13 @@ class AdminLoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!empty(session('username'))){
+        if (Auth::check())
+        {
             return $next($request);
         }
-        else{
-            return redirect(route('admin.login'));
+        else
+        {
+            return redirect(route('admin.login'))->withErrors('Không có quyền truy cập');
         }
     }
 }

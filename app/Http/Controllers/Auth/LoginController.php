@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Foundation\Http\FormRequest;
 use App\User;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -44,39 +45,45 @@ class LoginController extends Controller
     {
         return 'username';
     }
-    public function LoginForm()
+    public function showLoginForm()
     {
         return view('admin.login');
     }
-    public function adminHome()
-    {
-        return view ('admin.layout.admin');
-    }
     public function getLogin(Request $request)
     {
-        $username= $request->username;
-        $password = $request->password;
-        $password = md5($password);
-        $check = User::where('username', $username)->first();
-        if (isset($check->username)) {
 
-            if ($password == $check->password) {
+           $rules = [
+                'username' => 'required',
+                'password' => 'required|min:2'
+            ];
+        $messages = [
+                'username.required' => 'Yêu cầu nhập tài khoản!',
+                'password.required' => 'Yêu cầu nhập mật khẩu!',
+                'password.min' => 'Mật khẩu ít nhất 8 kí tự!'
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else
+        {
+            $data=[
+                'username'=>$request->username,
+                'password'=>$request->password
+            ];
+            if (Auth::attempt($data)) {
+                return redirect()->intended(url('/home'));
 
-                $request->session()->put('username', $check->username);
-                $request->session()->put('fullname', $check->fullname);
-                $request->session()->put('level', $check->level);
-                $data = $request->session()->all();
-                return redirect(route('admin.home'));
             }else{
-                return redirect()->back()->with('success', 'Xin vui lòng kiểm tra lại tài khoản và mật khẩu !');;
+                $errors = new MessageBag(['errorlogin' => 'Tài khoản hoặc mật khẩu không đúng!']);
+                return redirect()->back()->withInput()->withErrors($errors);
             }
         }
 
     }
 
-    public function getLogout()
+    public function logout(Request $request)
     {
-        Session::forget('username');
+        Auth::logout();
         return redirect(route('admin.login'));
     }
   

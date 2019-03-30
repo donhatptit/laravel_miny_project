@@ -3,7 +3,7 @@
 </style>
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="">Admin</a>
+    <a class="navbar-brand mr-1" href="{{ route('home') }}">Admin</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -36,9 +36,9 @@
         </li>
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                @if (session('fullname'))
+                @if (Auth::user())
                     <strong>
-                        {{ session('fullname') }} ( @if(session('level') == 0) {{ 'Admin' }} @else {{'Editor'}} @endif )
+                        {{ Auth::user()->fullname }} ( @if(Auth::user()->level == 0) {{ 'Admin' }} @else {{'Editor'}} @endif )
                     </strong>
                 @endif
 

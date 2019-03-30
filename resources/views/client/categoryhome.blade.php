@@ -3,7 +3,7 @@
 <div class="content-1">
     <div class="title-content">
         <div class="title-heading">
-            {{ $dataclass->class }}
+            {{ $dataclass->class_name }}
         </div>
         <div class="btn-group">
             @foreach ($subject[$key] as $subjecthome)

@@ -27,16 +27,7 @@
                             </div>
                         </div>
                         <!-- end form group -->
-                        <!-- form group -->
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-2 text-right">Email</div>
-                                <div class="col-md-10">
-                                    <input type="text" name="email" autocomplete="off" value="{{  $user['email'] }}" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end form group -->
+
                         <!-- form group -->
                         <div class="form-group">
                             <div class="row">

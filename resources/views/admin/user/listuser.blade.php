@@ -42,7 +42,6 @@
                         <tr>
                             <th style="width: 250px;">Tài khoản</th>
                             <th>Họ và Tên</th>
-                            <th style="width: 300px;">Email</th>
                             <th>Chức vụ</th>
                             <th style="width: 150px;">Hành Động</th>
                         </tr>
@@ -55,7 +54,6 @@
                             <td>{{ $listuser->username }}</td>
 
                             <td>{{ $listuser->fullname}}</td>
-                            <td>{{ $listuser->email }}</td>
                             <td>
                                 @if($listuser->level == 0)
                                      Admin

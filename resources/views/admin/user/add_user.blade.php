@@ -16,7 +16,7 @@
                     </div>
                 @endif
 
-                <form method="post" action="them-nguoi-dung">
+                <form method="post" action="{{ route('user.add') }}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <!-- form group -->
                     <div class="form-group">
@@ -24,16 +24,6 @@
                             <div class="col-md-2 text-right">Họ và tên</div>
                             <div class="col-md-10">
                                 <input type="text" name="fullname" autocomplete="off" value="" placeholder="Nhập Họ và Tên" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end form group -->
-                    <!-- form group -->
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-2 text-right">Email</div>
-                            <div class="col-md-10">
-                                <input type="text" name="email" autocomplete="off" placeholder="Nhập email" value="" class="form-control">
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,7 @@ use App\User;
 use App\Subject;
 use App\Post;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 class PostController extends Controller
 {
@@ -55,7 +56,7 @@ class PostController extends Controller
         $post->name = $request->name;
         $post->subject_id = $request->subject_id;
         $post->content = $request->get('content');
-        $post->athour = Session::get('fullname');
+        $post->athour = Auth::user()->fullname;
         $post->view = 0;
         $post->favorite = 0;
         $post->save();
@@ -84,7 +85,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $subjects = Subject::all();
-        return view('admin.post.edit', ['post' => $post], ['subjects' => $subjects]);
+        return view('admin.post.edit', ['post' => $post, 'subjects' => $subjects]);
     }
 
     /**
@@ -110,7 +111,6 @@ class PostController extends Controller
         $post->name = $request->name;
         $post->subject_id = $request->subject_id;
         $post->content = $request->get('content');
-        $post->athour = Session::get('fullname');
         $post->view = 0;
         $post->favorite = 0;
         $post->save();

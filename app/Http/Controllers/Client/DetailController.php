@@ -24,7 +24,6 @@ class DetailController extends Controller
         $data_class = Category::with('subject')->orderBy('id', 'desc')->get();
         $data_post = Post::all()->slice(0, 6)->sortByDesc('id');
         $breadcurmbs = $this->rendBreadcurmbs($post_id);
-//    dd($breadcurmbs);
         $data = [
             'data_class' => $data_class,
             'subject' => $subject,
@@ -37,7 +36,6 @@ class DetailController extends Controller
     public function rendBreadcurmbs($id)
     {
         $post = Post::where('id', $id)->first();
-//        dd($post);
         $subject = Subject::where('id', $post['subject_id'])->first();
         $category = Category::where('id', $subject['class_id'])->first();
         $sub = route('subject.name', [ 'class_id' => $subject['class_id'], 'subject_id' => $post['subject_id'], 'p' => 1]);

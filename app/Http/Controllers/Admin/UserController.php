@@ -6,9 +6,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
+
+
 
     /**
      * Display a listing of the resource.
@@ -19,8 +22,9 @@ class UserController extends Controller
     public function listUser()
     {
 
-        $users = User::orderBy('id', 'desc')->paginate(2);
-        return view('admin.user.listuser', ['users' => $users]);
+            $users = User::orderBy('id', 'desc')->paginate(2);
+            return view('admin.user.listuser', ['users' => $users]);
+
     }
     /**
      * Show the form for creating a new resource.
@@ -44,8 +48,7 @@ class UserController extends Controller
                 $this->validate($request,
             [
                 'fullname' => 'required',
-                'username' => 'required|unique:tbl_user,username|min:3',
-                'email' => 'required|unique:tbl_user,email',
+                'username' => 'required|unique:users,username|min:3',
                 'password' => 'required|min:4|max:12',
                 'passwordAgain' => 'required|same:password'
             ], [
@@ -53,8 +56,6 @@ class UserController extends Controller
                 'username.required' => 'Vui lòng nhập tài khoản',
                         'username.min' => 'Tài khoản phải có ít nhất 3 ký tự',
                         'username.unique' => 'Tài khoản đã tồn tại',
-                        'email.required' => 'Vui lòng nhập email',
-                        'email.unique' => 'Email đã tồn tại',
                 'password.required' => 'Vui lòng nhập mật khẩu',
                         'password.min' => 'Mật khẩu phải có ít nhất 4 ký tự',
                         'password.max' => 'Mật khẩu không quá 12 ký tự',
@@ -68,9 +69,8 @@ class UserController extends Controller
         }
         $user = new User;
         $user->username = $request->username;
-        $user->password  = md5($request->password);
+        $user->password  = bcrypt($request->password);
         $user->fullname = $request->fullname;
-        $user->email = $request->email;
         $user->level = $request->level;
         $user->save();
         $request->session()->flash('message', 'Thêm thành công!');
@@ -111,11 +111,11 @@ class UserController extends Controller
     {
         $this->validate($request,
             [
-                'fullname' => 'required',
-                'email' => 'required'
+                'fullname' => 'required'
+
             ], [
-                'fullname.required' => 'Vui lòng nhập tên người dùng',
-                'email.required' => 'Vui lòng nhập email'
+                'fullname.required' => 'Vui lòng nhập tên người dùng'
+
             ]);
 
         if (isset($request->level)) {
@@ -127,9 +127,8 @@ class UserController extends Controller
         $user = User::find($id);
 
         $user->fullname = $request->fullname;
-        $user->email = $request->email;
         if ($request->password != '') {
-            $user->password  = md5($request->password);
+            $user->password  = bcrypt($request->password);
         } else {
             $user->password  = $user->password;
         }
@@ -153,4 +152,5 @@ class UserController extends Controller
         session()->flash('mess', 'Xóa thành công');
         return redirect(route('user.manager'));
     }
+
 }

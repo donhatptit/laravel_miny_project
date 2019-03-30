@@ -18,7 +18,6 @@ class PageController extends Controller
     public function index()
     {
         $data_class = Category::with('subject')->orderBy('id','desc')->get();
-//        dd($data_class);
         $data_class_home = Category::with('subject')->where('id',9)->orwhere('id',8)->orderBy('id','desc')->get();
         $data_post = Post::all()->slice(0, 6)->sortByDesc('id');
         $subject = [];  $post_bottom = [];

@@ -29,18 +29,25 @@
 
     <div class="form_login">
 
-        <form action="{{ route('admin.home') }}" method="post" class="container">
+        <form action="{{ url('admin/login') }}" method="post" class="container">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <h1>Login</h1>
             <label for="user"><b>Username:</b></label>
-            <input type="text" name="username" placeholder="Enter Username">
+            <input type="text" name="username" placeholder="Enter Username" value="{{ old('username') }}">
+                @if($errors->has('username'))
+                    <p style="color: red; font-style: italic; font-size: 12px;">{{ $errors->first('username') }}</p>
+                    @endif
+
             <label for="pass"><b>Password:</b></label>
             <input type="password" name="password" placeholder="Enter Password" id="pass" >
+            @if($errors->has('password'))
+                <p style="color: red; font-style: italic; font-size: 12px;">{{ $errors->first('password') }}</p>
+                @endif
             <input type="checkbox" onclick="showpass();" name="">Show password
             <div id="mess">
-                @if (session('success'))
+                @if ($errors->has('errorlogin'))
                     <div>
-                        <p>{{ session('success') }}</p>
+                        <p>{{ $errors->first('errorlogin') }}</p>
                     </div>
                 @endif
             </div>

@@ -17,12 +17,23 @@ Route::get('/', function () {
 //Admin
 
 
-    Route::get('admin/login', 'Auth\LoginController@LoginForm')->name('admin.login');
-    Route::post('admin/home', 'Auth\LoginController@getLogin');
-    Route::get('admin/logout', 'Auth\LoginController@getLogout')->name('admin.logout');
+    Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+    Route::post('admin/login', 'Auth\LoginController@getLogin');
+    Route::get('admin/logout', 'Auth\LoginController@logout')->name('admin.logout');
+    Route::get('home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => ['adminlogin']], function() {
 
-Route::group(['prefix' => 'admin', 'middleware' => 'adminlogin'], function() {
-    Route::get('home', 'Auth\LoginController@adminHome')->name('admin.home');
+    Route::group(['prefix' => 'user'], function()
+    {
+        Route::get('quan-ly-nguoi-dung', 'Admin\UserController@listUser')->name('user.manager');
+        Route::get('them-nguoi-dung', 'Admin\UserController@create')->name('user.add');
+        Route::post('them-nguoi-dung', 'Admin\UserController@store');
+
+        Route::get('sua/{id}', 'Admin\UserController@edit');
+        Route::post('sua/{id}', 'Admin\UserController@update')->name('user.update');
+
+        Route::get('xoa-{user_id}', 'Admin\UserController@destroy');
+    });
     Route::group(['prefix' => 'category'], function()
     {
         Route::get('quan-ly-lop', 'Admin\CategoryController@index')->name('category.manager');
@@ -48,7 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminlogin'], function() {
         Route::get('xoa-{id}', 'Admin\SubjectController@destroy');
 
     });
-
+  
     Route::group(['prefix' => 'post'], function()
     {
         Route::get('quan-ly-bai-viet', 'Admin\PostController@index')->name('post.manager');
@@ -62,17 +73,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminlogin'], function() {
 
     });
 
-    Route::group(['prefix' => 'user'], function()
-    {
-        Route::get('quan-ly-nguoi-dung', 'Admin\UserController@listUser')->name('user.manager');
-        Route::get('them-nguoi-dung', 'Admin\UserController@create')->name('user.add');
-        Route::post('them-nguoi-dung', 'Admin\UserController@store');
 
-        Route::get('sua/{id}', 'Admin\UserController@edit');
-        Route::post('sua/{id}', 'Admin\UserController@update')->name('user.update');
-
-        Route::get('xoa-{user_id}', 'Admin\UserController@destroy');
-    });
 
 
 });
@@ -87,3 +88,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/breadcurmbs/{type}/{id}', 'Client\DetailController@rendBreadcurmbs');
 Route::get('/breadcurmbs-category/{type}/{id}', 'Client\CategoryController@breadcurmbs');
 Route::get('/breadcurmbs-subject/{type}/{id}', 'Client\CategoryController@Subjectbreadcurmbs');
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

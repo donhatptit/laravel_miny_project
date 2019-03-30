@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="text-content">
-                                        {{$postname->content}}
+                                        {!! $postname->content !!}
                                     </div>
 
                                 </div>

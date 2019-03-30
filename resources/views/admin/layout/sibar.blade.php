@@ -1,11 +1,11 @@
 <ul class="sidebar navbar-nav">
     <li class="nav-item active">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('home') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
-    @if(session('level') == 0)
+    @if(Auth::user()->level == 0)
     <li class="nav-item">
         <a class="nav-link" href="{{ route('category.manager') }}">
             <i class="fas fa-align-justify"></i>

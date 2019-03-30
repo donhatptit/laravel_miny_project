@@ -16,7 +16,7 @@
                         </div>
                     @endif
 
-                    <form method="post" action="them-bai-viet">
+                    <form method="post" action="{{ route('post.add') }}">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <!-- form group -->
                         <div class="form-group">

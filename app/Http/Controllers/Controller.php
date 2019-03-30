@@ -11,24 +11,5 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-//    public function breadcrumb($data)
-//    {
-//        $breadcrumb = ['trang chủ'];
-//        if (isset($data['class'])) {
-//            array_push($breadcrumb, $data['class']);
-//        }
-//        if (isset($data['subject']) && $data['class'] != 'Mới nhất') {
-//            array_push($breadcrumb, $data['subject']);
-//        }
-//        if (isset($data['post'])) {
-//            if (!in_array($data['post']->class, $breadcrumb)) {
-//                array_push($breadcrumb, $data['post']->class);
-//            }
-//            if (!in_array($data['post']->subject, $breadcrumb)) {
-//                array_push($breadcrumb, $data['post']->subject);
-//            }
-//            array_push($breadcrumb, $data['post']->title);
-//        }
-//        return $breadcrumb;
-//    }
+
 }
