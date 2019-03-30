@@ -36,7 +36,7 @@
                                     <select name="class_id">
                                         @foreach($categories as $cate)
                                         <option   value="{{ $cate['id'] }}">
-                                            {{ $cate['class'] }}
+                                            {{ $cate['class_name'] }}
 
                                         </option>
                                         @endforeach

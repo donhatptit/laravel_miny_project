@@ -77,7 +77,11 @@ class SubjectController extends Controller
     {
         $subject = Subject::find($id);
         $categories = Category::all();
-        return view('admin.subject.edit', ['subject' => $subject, 'categories' => $categories]);
+        $data =[
+            'subject' => $subject,
+            'categories' => $categories
+        ];
+        return view('admin.subject.edit', $data);
     }
 
     /**

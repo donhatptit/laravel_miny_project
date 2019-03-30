@@ -16,14 +16,14 @@
                         </div>
                     @endif
 
-                    <form method="post" action="{{route('sub.update',$sub['id'])}}">
+                    <form method="post" action="{{route('sub.update',$subject['id'])}}">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <!-- form group -->
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-2 text-right">Tên môn học</div>
                                 <div class="col-md-10">
-                                    <input type="text" name="name_subject" value="{{ $sub['name_subject'] }}" class="form-control">
+                                    <input type="text" name="name_subject" value="{{ $subject['name_subject'] }}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -35,10 +35,10 @@
                                 <div class="col-md-10">
                                     <select name="class_id">
                                         @foreach($categories as $cate)
-                                            <option @if ($sub['class_id'] == $cate['id'])
+                                            <option @if ($subject['class_id'] == $cate['id'])
                                                     {{"selected"}}
                                                     @endif   value="{{ $cate['id'] }}">
-                                                {{ $cate['class'] }}
+                                                {{ $cate['class_name'] }}
 
                                             </option>
                                         @endforeach

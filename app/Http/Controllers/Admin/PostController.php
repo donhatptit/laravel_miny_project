@@ -85,7 +85,11 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $subjects = Subject::all();
-        return view('admin.post.edit', ['post' => $post, 'subjects' => $subjects]);
+        $data =[
+            'post' => $post,
+            'subjects' => $subjects
+        ];
+        return view('admin.post.edit', $data);
     }
 
     /**
