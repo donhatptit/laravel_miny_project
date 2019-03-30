@@ -75,7 +75,7 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        $subject = Subject::find($id);
+        $subject = Subject::findOrFail($id);
         $categories = Category::all();
         $data =[
             'subject' => $subject,
@@ -102,7 +102,7 @@ class SubjectController extends Controller
             ]);
 
 
-        $subject = Subject::find($id);
+        $subject = Subject::findOrFail($id);
 
         $subject->name_subject= $request->name_subject;
         $subject->save();
@@ -118,7 +118,7 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        $subject = Subject::find($id);
+        $subject = Subject::findOrFail($id);
         $subject->delete();
         session()->flash('mess', 'Xóa thành công');
         return redirect(route('subject.manager'));

@@ -83,7 +83,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $subjects = Subject::all();
         $data =[
             'post' => $post,
@@ -110,7 +110,7 @@ class PostController extends Controller
                 'content.required' => 'Vui lòng nhập nội dung'
             ]);
 
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
         $post->name = $request->name;
         $post->subject_id = $request->subject_id;
@@ -130,7 +130,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $post->delete();
         session()->flash('mess', 'Xóa thành công!');
         return redirect(route('post.manager'));

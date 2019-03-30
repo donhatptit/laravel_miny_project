@@ -96,7 +96,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         return view('admin.user.edit_user', ['user' => $user]);
     }
 
@@ -124,7 +124,7 @@ class UserController extends Controller
             $request->level = 0;
         }
 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         $user->fullname = $request->fullname;
         if ($request->password != '') {
@@ -147,7 +147,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $user->delete();
         session()->flash('mess', 'Xóa thành công');
         return redirect(route('user.manager'));

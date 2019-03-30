@@ -72,7 +72,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $cate = Category::find($id);
+        $cate = Category::findOrFail($id);
         return view('admin.category.edit', ['cate' => $cate]);
     }
 
@@ -93,7 +93,7 @@ class CategoryController extends Controller
             ]);
 
 
-        $cate = Category::find($id);
+        $cate = Category::findOrFail($id);
 
         $cate->class_name= $request->class_name;
         $cate->save();
@@ -109,7 +109,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $cate = Category::find($id);
+        $cate = Category::findOrFail($id);
         $cate->delete();
         session()->flash('mess', 'Xóa thành công');
         return redirect(route('category.manager'));
